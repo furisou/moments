@@ -22,7 +22,7 @@ document.getElementById('username-input').addEventListener('keypress', function(
     if (event.key === 'Enter') {
         setUsername();
     }
-}); // Missing closing brace added here
+});
 
 function sendMessage() {
     const chatInput = document.getElementById('chat-input');
@@ -30,7 +30,15 @@ function sendMessage() {
 
     if (chatInput.value.trim() !== '') {
         const messageDiv = document.createElement('div');
-        messageDiv.innerHTML = `<b>${username}</b> [${getCurrentTime()}]: ${chatInput.value}`;
+        messageDiv.classList.add('message');
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <b>${username}</b> [${getCurrentTime()}]:
+            </div>
+            <div>${chatInput.value}</div>
+        `;
+        
+        // Insert the new message at the end of the message container
         messages.appendChild(messageDiv);
         messages.scrollTop = messages.scrollHeight;
 
@@ -39,22 +47,43 @@ function sendMessage() {
     }
 }
 
-// Event listener to detect "Enter" key press
 document.getElementById('chat-input').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         sendMessage();
     }
 });
 
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const messages = document.getElementById('messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <b>${username}</b> [${getCurrentTime()}]: Sent an image!
+            </div>
+            <img src="${e.target.result}" style="max-height: 200px; width: auto;">
+        `;
+        
+        // Insert the new message at the end of the message container
+        messages.appendChild(messageDiv);
+        messages.scrollTop = messages.scrollHeight;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
+
 fetch('https://api.ipify.org?format=json')
     .then(response => response.json())
     .then(data => {
-        // Display the IP address in the HTML
         const ipAddressElement = document.getElementById('ip-address');
         if (ipAddressElement) {
             ipAddressElement.textContent = data.ip;
-
-            // Call the ifAddress function with the fetched IP address
             ifAddress(data.ip);
         }
     })
