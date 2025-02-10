@@ -13,7 +13,6 @@
     display: inline-block;
 }
 
-
 #chat-container {
     width: 30%;
     margin: 0 auto;
@@ -35,10 +34,9 @@
     background: linear-gradient(104deg, rgba(180,34,88,1) 0%, rgba(207,25,99,1) 35%, rgba(255,0,112,1) 68%, rgba(205,133,44,1) 98%);
 }
 
-/* Ensure the height of images does not exceed 200 pixels */
 #messages img {
     max-height: 200px;
-    width: auto; /* Maintain aspect ratio */
+    width: auto;
 }
 
 #chat-input {

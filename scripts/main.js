@@ -5,7 +5,6 @@ function getCurrentTime() {
     let hours = now.getHours().toString().padStart(2, '0');
     let minutes = now.getMinutes().toString().padStart(2, '0');
     let seconds = now.getSeconds().toString().padStart(2, '0');
-    
     return `${hours}:${minutes}:${seconds}`;
 }
 
@@ -24,6 +23,11 @@ document.getElementById('username-input').addEventListener('keypress', function(
     }
 });
 
+function highlightURLs(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+}
+
 function sendMessage() {
     const chatInput = document.getElementById('chat-input');
     const messages = document.getElementById('messages');
@@ -35,22 +39,17 @@ function sendMessage() {
             <div class="message-content">
                 <b>${username}</b> [${getCurrentTime()}]:
             </div>
-            <div>${chatInput.value}</div>
+            <div>${highlightURLs(chatInput.value)}</div>
         `;
-        
-        // Insert the new message at the end of the message container
         messages.appendChild(messageDiv);
         messages.scrollTop = messages.scrollHeight;
-
-        // Clear the input field after sending
         chatInput.value = '';
     }
 }
 
-document.getElementById('chat-input').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
+document.getElementById('chatForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    sendMessage();
 });
 
 document.getElementById('file-input').addEventListener('change', function(event) {
@@ -67,8 +66,6 @@ document.getElementById('file-input').addEventListener('change', function(event)
             </div>
             <img src="${e.target.result}" style="max-height: 200px; width: auto;">
         `;
-        
-        // Insert the new message at the end of the message container
         messages.appendChild(messageDiv);
         messages.scrollTop = messages.scrollHeight;
     };
@@ -84,7 +81,6 @@ fetch('https://api.ipify.org?format=json')
         const ipAddressElement = document.getElementById('ip-address');
         if (ipAddressElement) {
             ipAddressElement.textContent = data.ip;
-            ifAddress(data.ip);
         }
     })
     .catch(error => {

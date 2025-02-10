@@ -15,10 +15,12 @@
         </div>
         <div id="chat-container" style="display: none;">
             <div id="messages"></div>
-            <input type="text" id="chat-input" placeholder="Type a message...">
-            <input type="file" id="file-input" style="display:none" accept="image/*">
-            <button onclick="sendMessage()">Send</button>
-            <button onclick="document.getElementById('file-input').click()">Send Image</button>
+            <form id="chatForm">
+                <input type="text" id="chat-input" placeholder="Type a message...">
+                <input type="file" id="file-input" style="display:none" accept="image/*">
+                <button type="submit">Send</button>
+                <button type="button" onclick="document.getElementById('file-input').click()">Send Image</button>
+            </form>
         </div>
         <p id="ip-address">Fetching...</p><br>
     </main>
