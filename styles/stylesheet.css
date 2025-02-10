@@ -12,26 +12,29 @@
     width: 30%;
     margin: 0 auto;
     margin-top: 5%;
-    border: 1px solid #ccc;
+    border: 1px solid #220202;
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #b30e6e;
     border-radius: 5px;
+
 }
 
 #messages {
     height: 300px;
     overflow-y: auto;
-    border: 1px solid #ccc;
+    border: 2px solid #7a0449;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #fff;
     text-align: left;
+    background: rgb(180,34,88);
+    background: linear-gradient(104deg, rgba(180,34,88,1) 0%, rgba(207,25,99,1) 35%, rgba(255,0,112,1) 68%, rgba(205,133,44,1) 98%);
 }
 
 #chat-input {
     width: 70%;
     padding: 10px;
     margin: 10px;
+    background: rgb(207, 89, 144);
 }
 
 #title {
@@ -42,6 +45,7 @@
 button {
     padding: 10px 20px;
     cursor: pointer;
+    background: rgb(180,34,88);
 }
 
 body {
