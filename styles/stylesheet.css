@@ -6,7 +6,13 @@
 #username-container {
     margin-top: 40px;
     margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #220202;
+    background-color: #b30e6e;
+    border-radius: 5px;
+    display: inline-block;
 }
+
 
 #chat-container {
     width: 30%;
