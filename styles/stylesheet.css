@@ -1,0 +1,55 @@
+#mainbox {
+    text-align: center;
+    margin: 20px;
+}
+
+#username-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#chat-container {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 5%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+#messages {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: left;
+}
+
+#chat-input {
+    width: 70%;
+    padding: 10px;
+    margin: 10px;
+}
+
+#title {
+    text-align: center;
+    font-size: 72px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Space Mono', 'Courier New', Courier, monospace;
+    height: 100%;
+    margin: 0;
+    background: rgb(180,34,88);
+    background: linear-gradient(104deg, rgba(180,34,88,1) 0%, rgba(207,25,99,1) 35%, rgba(255,0,112,1) 68%, rgba(205,133,44,1) 98%);
+    background-attachment: fixed;
+    background-size: cover;
+}

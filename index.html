@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox</title>
+    <link href="styles/stylesheet.css" rel="stylesheet">
+</head>
+<body>
+    <h1 id="title">Moments</h1>
+    <main id="mainbox">
+        <div id="username-container">
+            <input type="text" id="username-input" placeholder="Enter your username">
+            <button onclick="setUsername()">Start Chatting</button>
+        </div>
+        <div id="chat-container" style="display: none;">
+            <div id="messages"></div>
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <p id="ip-address">Fetching...</p><br>
+    </main>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
