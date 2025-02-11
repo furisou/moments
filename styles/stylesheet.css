@@ -11,6 +11,9 @@
     background-color: #b30e6e;
     border-radius: 5px;
     display: inline-block;
+    box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
+    -moz-box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
 }
 
 #chat-container {
@@ -21,6 +24,9 @@
     padding: 10px;
     background-color: #b30e6e;
     border-radius: 5px;
+    box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
+    -moz-box-shadow: 5px 5px 6px 4px rgba(0,0,0,0.52);
 }
 
 #messages {
