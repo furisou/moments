@@ -1,4 +1,8 @@
-let username = '';
+function sanitizeHTML(html) {
+    var temp = document.createElement('div');
+    temp.textContent = html;
+    return temp.innerHTML;
+}
 
 function getCurrentTime() {
     const now = new Date();
@@ -8,12 +12,17 @@ function getCurrentTime() {
     return `${hours}:${minutes}:${seconds}`;
 }
 
+let rawUsername = '';
+let username = ''
+
 function setUsername() {
     const usernameInput = document.getElementById('username-input');
     if (usernameInput.value.trim() !== '') {
-        username = usernameInput.value;
+        rawUsername = usernameInput.value;
+        username = sanitizeHTML(rawUsername);
         document.getElementById('username-container').style.display = 'none';
         document.getElementById('chat-container').style.display = 'block';
+        
     }
 }
 
@@ -22,6 +31,7 @@ document.getElementById('username-input').addEventListener('keypress', function(
         setUsername();
     }
 });
+
 
 function highlightURLs(text) {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -33,13 +43,13 @@ function sendMessage() {
     const messages = document.getElementById('messages');
 
     if (chatInput.value.trim() !== '') {
+        const sanitizedMessage = sanitizeHTML(chatInput.value);
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
         messageDiv.innerHTML = `
             <div class="message-content">
-                <b>${username}</b> [${getCurrentTime()}]:
+                <b>${username}</b> [${getCurrentTime()}]: ${highlightURLs(sanitizedMessage)}
             </div>
-            <div>${highlightURLs(chatInput.value)}</div>
         `;
         messages.appendChild(messageDiv);
         messages.scrollTop = messages.scrollHeight;
